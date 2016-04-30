@@ -15,7 +15,9 @@ namespace ws2812_sw
          *
          * @param output_pin WS2812 data pin
          */
-        WS2812Driver(PinName output_pin, uint32_t n);    
+        WS2812Driver(PinName output_pin, uint32_t n);
+
+        ~WS2812Driver();
            
         /** Initialize any hardware resources needed. On STM32, ensure timer clock
          *  is enabled before calling init().
@@ -30,7 +32,7 @@ namespace ws2812_sw
         mbed::DigitalOut _output;
         uint32_t _n_leds;
         std::vector<uint8_t> _data;
-        std::unique_ptr<WS2812PlatformImpl> _platform_impl;
+        WS2812PlatformImpl *_platform_impl;
     };
 }
 #endif

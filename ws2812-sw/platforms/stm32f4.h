@@ -5,6 +5,7 @@
 #define WS2812_SW_PLATFORM_IMPL
 
 #include <mbed-drivers/mbed.h>
+#include <stm32f4xx_hal_rcc.h>
 #include <stm32f4xx_hal_tim.h>
 
 namespace ws2812_sw
@@ -17,6 +18,7 @@ namespace ws2812_sw
         {
             // stm32_timer: Should be a GP timer, e.g. TIM4
             TIM_TypeDef *stm32_timer = TIM4;
+            __HAL_RCC_TIM4_CLK_ENABLE();
             _timer.Instance = stm32_timer;       
             // Create 2.4 MHz time base (84 MHz / 35), 3 ticks = 1 NZR bit window
             _timer.Init.Prescaler = 34;

@@ -12,11 +12,17 @@ WS2812Driver::WS2812Driver(PinName output_pin, uint32_t n)
       _n_leds(n),
       _data(3 * n)
 {
+    _platform_impl = new WS2812PlatformImpl(_output);
+    
     // Initialize element data
     for (unsigned int i=0; i < 3 * _n_leds; ++i)
         _data[i] = 0;        
 }
 
+WS2812Driver::~WS2812Driver()
+{
+    delete _platform_impl;
+}
 
 void WS2812Driver::init()
 {
