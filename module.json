@@ -1,0 +1,11 @@
+{
+  "name": "ws2812-sw",
+  "version": "1.0.0",
+  "keywords": [],
+  "author": "Brian Kauke <kaukeb@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+      "mbed-drivers" : "1.0.0"
+  }
+}
+
